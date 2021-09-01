@@ -14,3 +14,26 @@ class Solution:
                 return 0
             else: 
                 return int(revst)
+            
+    def reverse_v2(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        store_digit = []
+        negative = False
+        if x < 0:
+            negative = True
+            x = x * -1
+        rev = 0
+        while x != 0:
+            x, remain = divmod(x, 10)
+            rev = rev*10 + remain
+            
+        if negative:
+            rev *= -1
+            
+        if rev > (2**31 - 1) or rev < (2 ** 31)* -1:
+            return 0
+        
+        return rev
