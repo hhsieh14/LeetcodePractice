@@ -5,14 +5,18 @@ class Solution(object):
         :type order: str
         :rtype: bool
         """
+        ordermap = {}
+        for index, val in enumerate(order): #O(26)
+            ordermap[val] = index
+            
         i = 0
-        while i < len(words) - 1:
+        while i < len(words) - 1:#O(N)
             point1 = 0
             point2 = 0
-            while point1 < len(words[i]) and point2 < len(words[i + 1]):
-                if order.index(words[i][point1]) > order.index(words[i + 1][point2]):
+            while point1 < len(words[i]) and point2 < len(words[i + 1]):#O(M)
+                if ordermap[words[i][point1]] > ordermap[words[i + 1][point2]]:
                     return False
-                elif order.index(words[i][point1]) < order.index(words[i + 1][point2]):
+                elif ordermap[words[i][point1]] < ordermap[words[i + 1][point2]]:
                     break
                 point1 += 1
                 point2 += 1
